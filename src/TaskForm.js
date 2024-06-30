@@ -12,15 +12,22 @@ const TaskForm = ({ addTask }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Add new task"
-        value={taskName}
-        onChange={(v) => setTaskName(v.target.value)}
-      />
-      <button type="submit">Add Task</button>
-    </form>
+    <div>
+      <form className="flex items-center space-x-4" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Add new task"
+          value={taskName}
+          onChange={(v) => setTaskName(v.target.value)}
+        />
+        <button
+          className="border border-gray-500 px-4 h-6 rounded border-[#3DC2EC] bg-[#3DC2EC]"
+          type="submit"
+        >
+          Add Task
+        </button>
+      </form>
+    </div>
   );
 };
 

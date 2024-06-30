@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Task from "./Task";
 
-const TaskList = ({ tasks, toggleComplete, deleteTask }) => {
+const TaskList = ({ tasks, toggleComplete, deleteTask, editTask }) => {
   const [filter, setFilter] = useState("all");
 
   const filteredTasks = tasks.filter((task) => {
@@ -12,18 +12,34 @@ const TaskList = ({ tasks, toggleComplete, deleteTask }) => {
 
   return (
     <div>
-      <div>
-        <button onClick={() => setFilter("all")}>All</button>
-        <button onClick={() => setFilter("active")}>Active</button>
-        <button onClick={() => setFilter("completed")}>Completed</button>
+      <div className="flex space-x-6 mt-5 ">
+        <button
+          className="border border-gray-500 px-4 h-6 rounded border-[#3DC2EC] bg-[#3DC2EC]"
+          onClick={() => setFilter("all")}
+        >
+          All
+        </button>
+        <button
+          className="border border-gray-500 px-4 h-6 rounded border-[#3DC2EC] bg-[#3DC2EC]"
+          onClick={() => setFilter("active")}
+        >
+          Active
+        </button>
+        <button
+          className="border border-gray-500 px-4 h-6 rounded border-[#3DC2EC] bg-[#3DC2EC]"
+          onClick={() => setFilter("completed")}
+        >
+          Completed
+        </button>
       </div>
       <div>
-        {filteredTasks.map((v) => (
+        {filteredTasks.map((task) => (
           <Task
-            key={v.id}
-            task={v}
+            key={task.id}
+            task={task}
             toggleComplete={toggleComplete}
             deleteTask={deleteTask}
+            editTask={editTask}
           />
         ))}
       </div>
